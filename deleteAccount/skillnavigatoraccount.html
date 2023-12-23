@@ -110,7 +110,11 @@
         )
           .then((response) => response.json())
           .then((data) => {
-            alert(data.message);
+            if (data.success) {
+              alert("Account deleted successfully!");
+            } else {
+              alert("Failed to delete account. ");
+            }
           })
           .catch((error) => {
             console.error("Error:", error);
