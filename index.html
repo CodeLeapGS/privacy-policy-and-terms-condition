@@ -3,13 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navigation Example</title>
+    <title>Code Leap</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4; /* Set a background color for the body */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      /* Container to center the content */
+      .container {
+        max-width: 600px;
+        width: 100%;
+      }
+
+      /* Navigation links styles */
+      a {
+        display: block;
+        padding: 15px;
+        margin: 10px;
+        text-decoration: none;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out,
+          transform 0.3s ease-in-out;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      a:hover {
+        background-color: #ddd;
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to My Website</h1>
+    <div class="container">
+      <h1>Welcome to CodeLeap</h1>
 
-    <!-- Link to another screen (replace "destination.html" with the actual destination) -->
-    <a href="PrivacyPolicy/skillnavigator.html">Skill Navigator</a>
-    <a href="PrivacyPolicy/findmycar.html">Find My Car</a>
+      <!-- Link to another screen (replace "destination.html" with the actual destination) -->
+      <a href="PrivacyPolicy/skillnavigator.html">Skill Navigator</a>
+      <a href="PrivacyPolicy/findmycar.html">Find My Car</a>
+      <a href="deleteAccount/skillnavigatoraccount.html"
+        >Skill Navigator Delete</a
+      >
+    </div>
   </body>
 </html>

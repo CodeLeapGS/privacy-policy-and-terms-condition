@@ -6,54 +6,116 @@
     <title>Delete Account</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+
+      #deleteAccountForm {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
       }
 
       label {
         display: block;
         margin-bottom: 8px;
+        color: #fff;
       }
 
       input {
         width: 100%;
-        padding: 8px;
+        padding: 10px;
         margin-bottom: 16px;
         box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #333;
       }
 
       button {
         background-color: #dc3545;
         color: #fff;
-        padding: 10px 20px;
+        padding: 12px 24px;
         font-size: 16px;
         border: none;
+        border-radius: 4px;
         cursor: pointer;
+        transition: background-color 0.3s ease-in-out,
+          transform 0.3s ease-in-out;
       }
 
       button:hover {
         background-color: #c82333;
+        transform: scale(1.05);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Add animation to the form */
+      #deleteAccountForm {
+        animation: fadeIn 0.8s ease-in-out;
       }
     </style>
   </head>
   <body>
-    <h2>Delete Account</h2>
-    <form id="deleteAccountForm">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+    <div id="deleteAccountForm">
+      <h2>Delete Account</h2>
+      <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
 
-      <button type="button" onclick="deleteAccount()">Delete</button>
-    </form>
+        <button type="button" onclick="deleteAccount()">Delete</button>
+      </form>
+    </div>
 
     <script>
       function deleteAccount() {
-        // Add your JavaScript code here to handle the deletion process
-        // You may want to use AJAX to send a request to the server
-        // and handle the response accordingly
-        alert("Account deletion functionality needs to be implemented.");
+        // Get email and password values from the form
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Make an AJAX request to the Node.js API
+        fetch(
+          "https://skill-navigator-be.vercel.app/api/v1/auth/webpage/deleteAccount",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password,
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while deleting the account.");
+          });
       }
     </script>
   </body>
