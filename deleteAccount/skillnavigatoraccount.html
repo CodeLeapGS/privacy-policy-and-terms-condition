@@ -109,7 +109,11 @@
           }
         )
           .then((data) => {
-            alert("Account deleted successfully!", data);
+            if (data.success) {
+              alert("Account deleted successfully!");
+            } else {
+              alert("Failed to delete account. ", data);
+            }
           })
           .catch((error) => {
             console.error("Error:", error);
