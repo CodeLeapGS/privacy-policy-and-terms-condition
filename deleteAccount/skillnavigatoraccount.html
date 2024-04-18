@@ -130,6 +130,9 @@
           })
           .then((data) => {
             if (data) {
+              document.getElementById("email").value = "";
+              document.getElementById("password").value = "";
+
               alert("Account deleted successfully!");
             } else {
               alert("Account deletion failed. Please check your credentials.");
